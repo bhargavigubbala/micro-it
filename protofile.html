@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: #f0f4f8;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    a {
+      color: #4ade80;
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px 64px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(15, 32, 64, 0.95);
+      padding: 24px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: #4ade80;
+      user-select: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    nav ul li a {
+      color: #f0f4f8;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 8px 0;
+      display: inline-block;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+    nav ul li a:hover,
+    nav ul li a:focus {
+      border-color: #4ade80;
+      outline: none;
+    }
+
+    /* Hero / About Me */
+    section#about {
+      padding: 64px 0 48px;
+      background: rgba(15, 32, 64, 0.6);
+      border-radius: 16px;
+      box-shadow: 0 0 30px #4ade8044;
+      margin-top: 32px;
+      text-align: center;
+    }
+    section#about h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    section#about p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+      color: #d1fae5;
+    }
+
+    /* Projects Section */
+    section#projects {
+      margin-top: 64px;
+    }
+    section#projects h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 32px;
+      text-align: center;
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .project-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+    .project-card {
+      background: rgba(30, 60, 90, 0.85);
+      border-radius: 16px;
+      padding: 24px 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover,
+    .project-card:focus-within {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(74, 222, 128, 0.7);
+      outline: none;
+    }
+    .project-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #4ade80;
+      margin-bottom: 12px;
+      user-select:none;
+    }
+    .project-description {
+      color: #c7e9cb;
+      flex-grow: 1;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      user-select:text;
+    }
+    .project-links a {
+      margin-right: 16px;
+      font-weight: 600;
+      font-size: 0.925rem;
+      color: #86efac;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      user-select:none;
+    }
+    .project-links a:hover,
+    .project-links a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    /* Contact Section */
+    section#contact {
+      margin-top: 64px;
+      padding-bottom: 48px;
+      text-align: center;
+    }
+    section#contact h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .contact-info {
+      font-size: 1.1rem;
+      color: #b5e7a0;
+      line-height: 1.5;
+    }
+    .contact-info a {
+      color: #bbf7d0;
+      font-weight: 700;
+    }
+    .contact-info a:hover,
+    .contact-info a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      padding: 24px 16px;
+      background: rgba(15, 32, 64, 0.8);
+      text-align: center;
+      font-size: 0.9rem;
+      color: #84cc16;
+      user-select:none;
+    }
+
+    /* Material Icons Button */
+    .material-icons.md-18 { font-size: 18px; vertical-align: bottom; }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      nav ul {
+        gap: 16px;
+      }
+      section#about h1 {
+        font-size: 2rem;
+      }
+      section#projects h2, section#contact h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+      <div class="logo" tabindex="0">YourName</div>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="#about" tabindex="0">About Me</a></li>
+          <li><a href="#projects" tabindex="0">Projects</a></li>
+          <li><a href="#contact" tabindex="0">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <!-- About Me -->
+    <section id="about" tabindex="-1" aria-label="About Me section">
+      <h1>About Me</h1>
+      <p>
+        Hello! I’m a passionate software developer with expertise in building modern web and mobile applications.
+        I enjoy solving complex problems and delivering great user experiences through clean, efficient code
+        and creative design. My background includes working with JavaScript frameworks, backend APIs, and
+        scalable cloud solutions.
+      </p>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" tabindex="-1" aria-label="Projects section">
+      <h2>Projects</h2>
+      <div class="project-list">
+        <article class="project-card" tabindex="0" aria-labelledby="project1-title" aria-describedby="project1-desc">
+          <h3 id="project1-title" class="project-title">Portfolio Website</h3>
+          <p id="project1-desc" class="project-description">
+            A fully responsive and accessible personal portfolio website showcasing my skills, projects, and contact information.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/yourusername/portfolio" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Portfolio Website">
+              <span class="material-icons md-18" aria-hidden="true">code</span>Code
+            </a>
+            <a href="https://yourportfolio.example.com" target="_blank" rel="noopener noreferrer" aria-label="Live demo of Portfolio Website">
+              <span class="material-icons md-18" aria-hidden="true">launch</span>Live
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card" tabindex="0" aria-labelledby="project2-title" aria-describedby="project2-desc">
+          <h3 id="project2-title" class="project-title">Task Manager App</h3>
+          <p id="project2-desc" class="project-description">
+            A progressive web app that helps users manage their daily tasks efficiently with offline support and notifications.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/yourusername/task-manager" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Task Manager App">
+              <span class="material-icons md-18" aria-hidden="true">code</span>Code
+            </a>
+            <a href="https://taskmanager.example.com" target="_blank" rel="noopener noreferrer" aria-label="Live demo of Task Manager App">
+              <span class="material-icons md-18" aria-hidden="true">launch</span>Live
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card" tabindex="0" aria-labelledby="project3-title" aria-describedby="project3-desc">
+          <h3 id="project3-title" class="project-title">Blog Platform</h3>
+          <p id="project3-desc" class="project-description">
+            An open-source blogging platform with a minimalist design, real-time content updates, and markdown support.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/yourusername/blog-platform" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Blog Platform">
+              <span class="material-icons md-18" aria-hidden="true">code</span>Code
+            </a>
+            <a href="https://blogplatform.example.com" target="_blank" rel="noopener noreferrer" aria-label="Live demo of Blog Platform">
+              <span class="material-icons md-18" aria-hidden="true">launch</span>Live
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" tabindex="-1" aria-label="Contact section">
+      <h2>Contact</h2>
+      <p class="contact-info">
+        I’m open to freelance work or full-time positions. Feel free to reach out by <a href="mailto:youremail@example.com" aria-label="Send me an email">email</a> or connect with me on social media:
+      </p>
+      <p class="contact-info" style="margin-top: 16px;">
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+          <span class="material-icons md-18" aria-hidden="true">linkedin</span> LinkedIn
+        </a> |
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+          <span class="material-icons md-18" aria-hidden="true">code</span> GitHub
+        </a> |
+        <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Twitter profile">
+          <span class="material-icons md-18" aria-hidden="true">twitter</span> Twitter
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    &copy; 2024 YourName. All rights reserved.
+  </footer>
+</body>
+</html>
+
